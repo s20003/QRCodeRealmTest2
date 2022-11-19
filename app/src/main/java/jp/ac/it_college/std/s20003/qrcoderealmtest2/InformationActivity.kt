@@ -25,6 +25,8 @@ class InformationActivity : AppCompatActivity() {
         binding = ActivityInformationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // fragment を使用する
+
         // recyclerViewにセットするデータ
         val result: RealmResults<Information> = realm.query<Information>().find()
 

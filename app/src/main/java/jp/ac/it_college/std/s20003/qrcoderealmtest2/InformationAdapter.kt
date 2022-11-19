@@ -66,9 +66,9 @@ class InformationAdapter(private val data: RealmResults<Information>) : Recycler
          */
         holder.itemView.setOnClickListener {
             // listener.onItemClick(data[position])
-            Toast.makeText(holder.itemView.context, data[position].name, Toast.LENGTH_LONG).show()
+            // Toast.makeText(holder.itemView.context, data[position].name, Toast.LENGTH_LONG).show()
             val context = holder.itemView.context
-            context.startActivity(Intent(context, AlarmListActivity::class.java))
+            context.startActivity(Intent(context, DetailActivity::class.java))
         }
     }
 

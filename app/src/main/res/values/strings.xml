@@ -9,7 +9,7 @@
     <string name="camera_button_text">Start Up</string>
     <string name="information_text">InformationList</string>
     <string name="delete_button_text">Delete</string>
-    <string name="alerm_switch_text">alerm</string>
+    <string name="alarm_switch_text">alarm</string>
+    <string name="return_button_text">Return</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
