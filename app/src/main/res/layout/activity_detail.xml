@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailActivity">
+    tools:context=".activity.DetailActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fv_detail"
-        android:name="jp.ac.it_college.std.s20003.qrcoderealmtest2.DetailFragment"
+        android:name="jp.ac.it_college.std.s20003.qrcoderealmtest2.fragment.DetailFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"

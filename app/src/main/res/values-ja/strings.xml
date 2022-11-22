@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">QRCodeRealmTest2</string>
+    <string name="app_name">お薬アラーム</string>
     <string name="qr_button_text">新規登録</string>
     <string name="info_button_text">薬の情報</string>
     <string name="home_button">ホー厶</string>
@@ -8,8 +8,10 @@
     <string name="setting_button_text">設定</string>
     <string name="register_button_text">登録</string>
     <string name="camera_button_text">カメラ起動</string>
-    <string name="information_text">　お薬  一覧</string>
+    <string name="information_text">お薬  一覧</string>
     <string name="delete_button_text">削除</string>
-    <string name="alarm_switch_text">通知</string>
+    <string name="notification_button_text">通知設定</string>
     <string name="return_button_text">戻る</string>
+    <string name="notification_title_text">通知設定</string>
+    <string name="notification_add_button_text">追加</string>
 </resources>

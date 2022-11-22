@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package jp.ac.it_college.std.s20003.qrcoderealmtest2
+package jp.ac.it_college.std.s20003.qrcoderealmtest2.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

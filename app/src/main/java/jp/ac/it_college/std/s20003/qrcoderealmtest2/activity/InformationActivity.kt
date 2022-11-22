@@ -1,15 +1,14 @@
-package jp.ac.it_college.std.s20003.qrcoderealmtest2
+package jp.ac.it_college.std.s20003.qrcoderealmtest2.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
+import jp.ac.it_college.std.s20003.qrcoderealmtest2.adapter.InformationAdapter
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.ActivityInformationBinding
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Information
 
