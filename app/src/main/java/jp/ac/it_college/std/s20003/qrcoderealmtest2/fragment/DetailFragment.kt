@@ -41,6 +41,7 @@ class DetailFragment : Fragment() {
 
         binding.notificationButton.setOnClickListener {
             val intent = Intent(context, NotificationActivity::class.java)
+            intent.putExtra("NOTIFYNAME", drugName)
             startActivity(intent)
         }
 
@@ -48,7 +49,7 @@ class DetailFragment : Fragment() {
             AlertDialog.Builder(context)
                 .setTitle(binding.tvName.text.toString())
                 .setMessage("本当に削除しますか")
-                .setPositiveButton("Yes", DialogInterface.OnClickListener { _, _ ->
+                .setPositiveButton("削除します", DialogInterface.OnClickListener { _, _ ->
                     realm.writeBlocking {
                         val info = this.query<Information>("id == $0", data[position].id)
                             .find()
@@ -58,7 +59,7 @@ class DetailFragment : Fragment() {
                     // fragmentの削除処理を書く
                     activity?.finish()
                 })
-                .setNegativeButton("No", null)
+                .setNegativeButton("キャンセル", null)
                 .show()
         }
 
