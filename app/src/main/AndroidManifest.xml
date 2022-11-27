@@ -70,7 +70,9 @@
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
-        <receiver android:name=".AlarmReceiver" />
+
+        <receiver android:name=".AlarmReceiver" android:process=":remote" />
+
     </application>
 
 </manifest>
