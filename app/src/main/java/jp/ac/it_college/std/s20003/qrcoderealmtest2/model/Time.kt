@@ -9,5 +9,6 @@ class Time : RealmObject {
     @PrimaryKey
     var id: ObjectId = ObjectId.create()
     var notifyName: String = ""
-    var time: String = ""
+    var Hour: Int = 0
+    var Minute: Int = 0
 }

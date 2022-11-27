@@ -15,4 +15,5 @@
     <string name="notification_title_text">通知設定</string>
     <string name="notification_add_button_text">追加</string>
     <string name="notification_channel_name">サービス通知</string>
+    <string name="colon">:</string>
 </resources>

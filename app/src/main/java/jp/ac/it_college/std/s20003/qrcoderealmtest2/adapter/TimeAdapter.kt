@@ -26,7 +26,8 @@ class TimeAdapter (private val timeData: RealmResults<Time>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.notifyName.text = timeData[position].notifyName
-        holder.binding.time.text = timeData[position].time
+        holder.binding.hour.text = timeData[position].Hour.toString()
+        holder.binding.minute.text = timeData[position].Minute.toString()
         holder.binding.deleteNotifyButton.setOnClickListener {
             realm.writeBlocking {
                 val info = this.query<Time>("id == $0", timeData[position].id)

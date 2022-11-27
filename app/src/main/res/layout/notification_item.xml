@@ -15,12 +15,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/time"
+        android:id="@+id/hour"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toStartOf="@+id/colonView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notify_name" />
+
+    <TextView
+        android:id="@+id/minute"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="48sp"
         app:layout_constraintEnd_toStartOf="@+id/delete_notify_button"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colonView"
         app:layout_constraintTop_toBottomOf="@+id/notify_name" />
 
     <Button
@@ -34,4 +44,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/colonView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toStartOf="@+id/minute"
+        app:layout_constraintStart_toEndOf="@+id/hour"
+        app:layout_constraintTop_toBottomOf="@+id/notify_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>
