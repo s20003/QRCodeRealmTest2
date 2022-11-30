@@ -16,4 +16,7 @@
     <string name="notification_add_button_text">追加</string>
     <string name="notification_channel_name">サービス通知</string>
     <string name="colon">:</string>
+    <string name="home_button_text">ホーム</string>
+    <string name="alarm_setting_button">通知</string>
+    <string name="notification_list_title">通知 一覧</string>
 </resources>

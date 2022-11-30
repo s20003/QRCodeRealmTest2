@@ -6,15 +6,14 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.SystemClock
-import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.timepicker.MaterialTimePicker
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
+import io.realm.kotlin.types.ObjectId
+import io.realm.kotlin.types.annotations.PrimaryKey
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.AlarmReceiver
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.adapter.TimeAdapter
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.ActivityNotificationBinding
@@ -46,7 +45,7 @@ class NotificationActivity : AppCompatActivity() {
 
         val name = intent.getStringExtra("NOTIFYNAME").toString()
 
-        binding.notifyList.apply {
+        binding.timeList.apply {
             layoutManager = LinearLayoutManager(this@NotificationActivity).apply {
                 orientation = LinearLayoutManager.VERTICAL
             }
@@ -60,7 +59,6 @@ class NotificationActivity : AppCompatActivity() {
 
             // TimePickerで時間を選択する
             TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
-                binding.testView.text = "${hourOfDay}:${minute}"
                 this.hour = hourOfDay
                 this.min = minute
                 realm.writeBlocking {
@@ -74,8 +72,13 @@ class NotificationActivity : AppCompatActivity() {
             }, startHour, startMinute, false).show()
         }
 
+        binding.homeButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         val dividerItemDecoration = DividerItemDecoration(this, LinearLayoutManager(this).orientation)
-        binding.notifyList.addItemDecoration(dividerItemDecoration)
+        binding.timeList.addItemDecoration(dividerItemDecoration)
     }
 
     private fun createNotificationChannel() {
@@ -91,7 +94,7 @@ class NotificationActivity : AppCompatActivity() {
 
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun setAlarm() {
-        val item: RealmResults<Time> = realm.query<Time>().find()
+        // val items: RealmResults<Time> = realm.query<Time>("id == $0").find()
         // AlarmReceiverを指定
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmReceiver::class.java)
@@ -107,7 +110,7 @@ class NotificationActivity : AppCompatActivity() {
         alarmManager.setInexactRepeating(
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
-            AlarmManager.INTERVAL_HALF_DAY, // AlarmManager.INTERVAL_DAY
+            AlarmManager.INTERVAL_FIFTEEN_MINUTES, // AlarmManager.INTERVAL_DAY
             pendingIntent
         )
     }

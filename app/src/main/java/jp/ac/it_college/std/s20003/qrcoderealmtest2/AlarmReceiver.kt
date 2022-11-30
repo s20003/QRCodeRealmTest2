@@ -8,12 +8,18 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import io.realm.kotlin.Realm
+import io.realm.kotlin.RealmConfiguration
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.activity.NotificationActivity
+import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Notification
 
 class AlarmReceiver : BroadcastReceiver() {
     companion object {
         private const val CHANNEL_ID = "notification_channel"
     }
+//    private val config = RealmConfiguration.Builder(schema = setOf(Notification::class))
+//        .build()
+//    private val realm: Realm = Realm.open(config)
 
     @SuppressLint("UnspecifiedImmutableFlag")
     override fun onReceive(context: Context, intent: Intent) {

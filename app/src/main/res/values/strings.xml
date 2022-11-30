@@ -15,5 +15,8 @@
     <string name="notification_add_button_text">Add</string>
     <string name="notification_channel_name">Service sample notification</string>
     <string name="colon">:</string>
+    <string name="home_button_text">Home</string>
+    <string name="alarm_setting_button">Notification</string>
+    <string name="notification_list_title">NotificationList</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

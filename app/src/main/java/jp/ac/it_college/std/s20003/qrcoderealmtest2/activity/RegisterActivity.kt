@@ -214,6 +214,30 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    private fun daysSearch() {
+        var startPoint: Int
+        var namePosition = -1
+        for (i in 1 until 10) {
+            startPoint = namePosition + 1
+            namePosition = completeQR.indexOf("301,", startPoint)
+            if (namePosition == -1) {
+                break
+            }
+            // println(i)
+            val sampleView = completeQR.substring(namePosition + 6)
+            val commaPosition1 = sampleView.indexOf(",")
+            val viewProduct = sampleView.substring(0, commaPosition1 + 15)
+            val datePosition = viewProduct.indexOf("日分")
+            if (datePosition == -1) {
+                break
+            }
+            val dateProduct = viewProduct.substring(datePosition - 3)
+            val commaPosition2 = dateProduct.indexOf(",")
+            val dateView = dateProduct.substring(0, commaPosition2)
+            println(dateView + "日分")
+        }
+    }
+
     // textView に入れる
     private fun nameInput() {
         when (num1) {
