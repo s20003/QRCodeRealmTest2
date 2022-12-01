@@ -26,14 +26,21 @@ class InformationAdapter(private val data: RealmResults<Information>) : Recycler
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // ViewHolder クラスが ViewBinding を持ってるので、それを経由して View の更新をする。
+        val day = if (data[position].count != "") {
+            "日分"
+        } else {
+            ""
+        }
         holder.binding.name.text = data[position].name
         holder.binding.usage.text = data[position].usage
+        holder.binding.days.text = data[position].count + day
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra("POSITION", position)
             intent.putExtra("NAME", data[position].name)
             intent.putExtra("USAGE", data[position].usage)
+            intent.putExtra("DAYS", data[position].count)
             context.startActivity(intent)
         }
     }

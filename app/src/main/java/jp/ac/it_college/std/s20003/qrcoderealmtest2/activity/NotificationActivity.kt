@@ -12,9 +12,7 @@ import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
-import io.realm.kotlin.types.ObjectId
-import io.realm.kotlin.types.annotations.PrimaryKey
-import jp.ac.it_college.std.s20003.qrcoderealmtest2.AlarmReceiver
+import jp.ac.it_college.std.s20003.qrcoderealmtest2.receiver.AlarmReceiver
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.adapter.TimeAdapter
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.ActivityNotificationBinding
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Time
@@ -30,6 +28,8 @@ class NotificationActivity : AppCompatActivity() {
     private var hour: Int = 0
     private var min: Int = 0
 
+    private lateinit var name: String
+
     private val config = RealmConfiguration.Builder(schema = setOf(Time::class))
         .build()
     private val realm: Realm = Realm.open(config)
@@ -43,7 +43,7 @@ class NotificationActivity : AppCompatActivity() {
 
         val result: RealmResults<Time> = realm.query<Time>().find()
 
-        val name = intent.getStringExtra("NOTIFYNAME").toString()
+        name = intent.getStringExtra("NOTIFYNAME").toString()
 
         binding.timeList.apply {
             layoutManager = LinearLayoutManager(this@NotificationActivity).apply {
@@ -58,7 +58,7 @@ class NotificationActivity : AppCompatActivity() {
             val startMinute = calendar.get(Calendar.MINUTE)
 
             // TimePickerで時間を選択する
-            TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
+            TimePickerDialog(this, { _, hourOfDay, minute ->
                 this.hour = hourOfDay
                 this.min = minute
                 realm.writeBlocking {
@@ -96,8 +96,10 @@ class NotificationActivity : AppCompatActivity() {
     private fun setAlarm() {
         // val items: RealmResults<Time> = realm.query<Time>("id == $0").find()
         // AlarmReceiverを指定
+        val drugName = name
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmReceiver::class.java)
+        intent.putExtra("NAME", drugName)
         pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
 
         // アラームの時間指定

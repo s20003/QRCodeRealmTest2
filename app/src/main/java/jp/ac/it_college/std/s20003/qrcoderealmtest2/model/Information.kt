@@ -9,5 +9,5 @@ class Information : RealmObject {
     var id: ObjectId = ObjectId.create()
     var name: String = ""
     var usage: String = ""
-    var count: Int = 0
+    var count: String = ""
 }

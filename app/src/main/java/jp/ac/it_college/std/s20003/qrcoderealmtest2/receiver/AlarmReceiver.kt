@@ -1,4 +1,4 @@
-package jp.ac.it_college.std.s20003.qrcoderealmtest2
+package jp.ac.it_college.std.s20003.qrcoderealmtest2.receiver
 
 import android.annotation.SuppressLint
 import android.app.PendingIntent
@@ -8,10 +8,7 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import io.realm.kotlin.Realm
-import io.realm.kotlin.RealmConfiguration
-import jp.ac.it_college.std.s20003.qrcoderealmtest2.activity.NotificationActivity
-import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Notification
+import jp.ac.it_college.std.s20003.qrcoderealmtest2.activity.AlarmListActivity
 
 class AlarmReceiver : BroadcastReceiver() {
     companion object {
@@ -20,19 +17,22 @@ class AlarmReceiver : BroadcastReceiver() {
 //    private val config = RealmConfiguration.Builder(schema = setOf(Notification::class))
 //        .build()
 //    private val realm: Realm = Realm.open(config)
+// realmの設定をonReceiveの中に書いてみる
 
     @SuppressLint("UnspecifiedImmutableFlag")
     override fun onReceive(context: Context, intent: Intent) {
-        val i = Intent(context, NotificationActivity::class.java)
+        val i = Intent(context, AlarmListActivity::class.java)
         i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         val startApp = PendingIntent.getActivity(
             context, 0, i, 0,
         )
 
+        val drugName = intent.getStringExtra("NAME")
+
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(android.R.drawable.ic_dialog_info)
             .setContentTitle("お薬アラーム")
-            .setContentText("お薬を飲んでください")
+            .setContentText("${drugName}を飲んでください")
             .setAutoCancel(true)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .setPriority(NotificationCompat.PRIORITY_HIGH)

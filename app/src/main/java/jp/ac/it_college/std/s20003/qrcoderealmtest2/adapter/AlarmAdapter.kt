@@ -7,11 +7,11 @@ import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.query.RealmResults
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.AlarmItemBinding
-import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Notification
+import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Notify
 
-class AlarmAdapter (private val notifyData: RealmResults<Notification>) : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
+class AlarmAdapter (private val notifyData: RealmResults<Notify>) : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
 
-    private val config = RealmConfiguration.Builder(schema = setOf(Notification::class))
+    private val config = RealmConfiguration.Builder(schema = setOf(Notify::class))
         .build()
     private val realm: Realm = Realm.open(config)
 

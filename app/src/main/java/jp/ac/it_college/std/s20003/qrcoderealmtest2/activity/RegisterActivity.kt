@@ -29,6 +29,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private var num1: Int = 0
     private var num2: Int = 0
+    private var num3: Int = 0
     private var productView: String = ""
 
     private var code1 = ""
@@ -57,15 +58,17 @@ class RegisterActivity : AppCompatActivity() {
 
             val nameLists = listOf("aaa", "bbb", "ccc", "ddd", "eee")
             val usageLists = listOf("111", "222", "333", "444", "555")
+            val daysLists = listOf("", "30", "", "", "")
 
             realm.writeBlocking {
                 for (i in 0..4) {
-                    if (nameLists[i] == "" && usageLists[i] == "") {
+                    if (nameLists[i] == "" && usageLists[i] == "" && daysLists[i] == "") {
                         continue
                     }
                     copyToRealm(Information().apply {
                         name = nameLists[i].toString()
                         usage = usageLists[i].toString()
+                        count = daysLists[i].toString()
                     })
                 }
             }
@@ -111,6 +114,7 @@ class RegisterActivity : AppCompatActivity() {
                             completeQR = code1 + code2
                             nameSearch()
                             usageSearch()
+                            daysSearch()
                         }
                         Toast.makeText(this, "２つ目のQRコードを読み取りました", Toast.LENGTH_LONG).show()
                     }
@@ -223,18 +227,19 @@ class RegisterActivity : AppCompatActivity() {
             if (namePosition == -1) {
                 break
             }
-            // println(i)
-            val sampleView = completeQR.substring(namePosition + 6)
-            val commaPosition1 = sampleView.indexOf(",")
-            val viewProduct = sampleView.substring(0, commaPosition1 + 15)
-            val datePosition = viewProduct.indexOf("日分")
-            if (datePosition == -1) {
+            num3 = i
+            val extractView = completeQR.substring(namePosition + 6)
+            val commaPosition1 = extractView.indexOf(",")
+            val viewProduct = extractView.substring(0, commaPosition1 + 15)
+            val daysPosition = viewProduct.indexOf("日分")
+            if (daysPosition == -1) {
                 break
             }
-            val dateProduct = viewProduct.substring(datePosition - 3)
-            val commaPosition2 = dateProduct.indexOf(",")
-            val dateView = dateProduct.substring(0, commaPosition2)
-            println(dateView + "日分")
+            val daysProduct = viewProduct.substring(daysPosition - 3)
+            val commaPosition2 = daysProduct.indexOf(",")
+            val dateView = daysProduct.substring(0, commaPosition2)
+            productView = dateView
+            daysInput()
         }
     }
 
@@ -275,6 +280,26 @@ class RegisterActivity : AppCompatActivity() {
             }
             5 -> {
                 binding.usageView5.text = productView
+            }
+        }
+    }
+
+    private fun daysInput() {
+        when (num3) {
+            1 -> {
+                binding.daysView1.text = productView
+            }
+            2 -> {
+                binding.daysView1.text = productView
+            }
+            3 -> {
+                binding.daysView1.text = productView
+            }
+            4 -> {
+                binding.daysView1.text = productView
+            }
+            5 -> {
+                binding.daysView1.text = productView
             }
         }
     }

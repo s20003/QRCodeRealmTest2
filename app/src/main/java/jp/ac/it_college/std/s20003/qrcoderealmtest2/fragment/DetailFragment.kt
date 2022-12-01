@@ -35,9 +35,14 @@ class DetailFragment : Fragment() {
         val position = requireActivity().intent.getIntExtra("POSITION", 0)
         val drugName = requireActivity().intent.getStringExtra("NAME")
         val drugUsage = requireActivity().intent.getStringExtra("USAGE")
+        val days = requireActivity().intent.getStringExtra("DAYS")
 
         binding.tvName.text = drugName
         binding.tvUsage.text = drugUsage
+        binding.tvDays.text = days
+        if (binding.tvDays.text != "") {
+            binding.textView4.text = "日分"
+        }
 
         binding.notificationButton.setOnClickListener {
             val intent = Intent(context, NotificationActivity::class.java)
@@ -68,7 +73,6 @@ class DetailFragment : Fragment() {
             data.drop(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, itemCount)
-        }
          */
 
         return view

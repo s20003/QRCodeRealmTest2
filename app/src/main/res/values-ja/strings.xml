@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">お薬アラーム</string>
+    <string name="app_name">お薬タイマー</string>
     <string name="qr_button_text">新規登録</string>
     <string name="info_button_text">薬の情報</string>
     <string name="home_button">ホー厶</string>

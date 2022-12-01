@@ -4,7 +4,7 @@ import io.realm.kotlin.types.ObjectId
 import io.realm.kotlin.types.RealmObject
 import io.realm.kotlin.types.annotations.PrimaryKey
 
-class Notification : RealmObject {
+class Notify : RealmObject {
     @PrimaryKey
     var id: ObjectId = ObjectId.create()
     var notifyName: String = ""
