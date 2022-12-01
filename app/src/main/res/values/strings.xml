@@ -18,5 +18,7 @@
     <string name="home_button_text">Home</string>
     <string name="alarm_setting_button">Notification</string>
     <string name="notification_list_title">NotificationList</string>
+    <string name="check_button_text">Took Medicine</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

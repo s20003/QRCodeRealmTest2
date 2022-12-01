@@ -1,5 +1,6 @@
 package jp.ac.it_college.std.s20003.qrcoderealmtest2.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,6 +8,7 @@ import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
+import jp.ac.it_college.std.s20003.qrcoderealmtest2.activity.AlarmDetailActivity
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.NotificationItemBinding
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Time
 
@@ -28,13 +30,20 @@ class TimeAdapter (private val timeData: RealmResults<Time>) : RecyclerView.Adap
         holder.binding.notifyName.text = timeData[position].notifyName
         holder.binding.hour.text = timeData[position].Hour.toString()
         holder.binding.minute.text = timeData[position].Minute.toString()
-        holder.binding.deleteNotifyButton.setOnClickListener {
-            realm.writeBlocking {
-                val info = this.query<Time>("id == $0", timeData[position].id)
-                    .find()
-                    .first()
-                this.delete(info)
-            }
+//        holder.binding.deleteNotifyButton.setOnClickListener {
+//            realm.writeBlocking {
+//                val info = this.query<Time>("id == $0", timeData[position].id)
+//                    .find()
+//                    .first()
+//                this.delete(info)
+//            }
+//        }
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, AlarmDetailActivity::class.java)
+            intent.putExtra("POSITION", position)
+            intent.putExtra("NAME", timeData[position].notifyName)
+            context.startActivity(intent)
         }
     }
 

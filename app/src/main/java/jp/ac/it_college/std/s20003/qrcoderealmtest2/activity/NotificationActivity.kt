@@ -97,10 +97,13 @@ class NotificationActivity : AppCompatActivity() {
         // val items: RealmResults<Time> = realm.query<Time>("id == $0").find()
         // AlarmReceiverを指定
         val drugName = name
+        val range = (1..1000)
+        val id = range.random()
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmReceiver::class.java)
         intent.putExtra("NAME", drugName)
-        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+        intent.putExtra("ID", id)
+        pendingIntent = PendingIntent.getBroadcast(this, id, intent, 0)
 
         // アラームの時間指定
         calendar = Calendar.getInstance().apply {

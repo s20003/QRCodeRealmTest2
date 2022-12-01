@@ -1,7 +1,6 @@
 package jp.ac.it_college.std.s20003.qrcoderealmtest2.fragment
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -54,7 +53,7 @@ class DetailFragment : Fragment() {
             AlertDialog.Builder(context)
                 .setTitle(binding.tvName.text.toString())
                 .setMessage("本当に削除しますか")
-                .setPositiveButton("削除します", DialogInterface.OnClickListener { _, _ ->
+                .setPositiveButton("削除します") { _, _ ->
                     realm.writeBlocking {
                         val info = this.query<Information>("id == $0", data[position].id)
                             .find()
@@ -63,7 +62,7 @@ class DetailFragment : Fragment() {
                     }
                     // fragmentの削除処理を書く
                     activity?.finish()
-                })
+                }
                 .setNegativeButton("キャンセル", null)
                 .show()
         }

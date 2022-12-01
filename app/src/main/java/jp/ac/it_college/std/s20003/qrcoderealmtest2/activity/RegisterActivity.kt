@@ -2,6 +2,7 @@
 
 package jp.ac.it_college.std.s20003.qrcoderealmtest2.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -128,6 +129,7 @@ class RegisterActivity : AppCompatActivity() {
                             completeQR = code1 + code2 + code3
                             nameSearch()
                             usageSearch()
+                            daysSearch()
                         }
                         Toast.makeText(this, "３つ目のQRコードを読み取りました", Toast.LENGTH_LONG).show()
                     }
@@ -141,6 +143,7 @@ class RegisterActivity : AppCompatActivity() {
                             completeQR = code1 + code2 + code3 + code4
                             nameSearch()
                             usageSearch()
+                            daysSearch()
                         }
                         Toast.makeText(this, "４つ目のQRコードを読み取りました", Toast.LENGTH_LONG).show()
                     }
@@ -154,6 +157,7 @@ class RegisterActivity : AppCompatActivity() {
                             completeQR = code1 + code2 + code3 + code4 + code5
                             nameSearch()
                             usageSearch()
+                            daysSearch()
                         }
                         Toast.makeText(this, "５つ目のQRコードを読み取りました", Toast.LENGTH_LONG).show()
                     }
@@ -165,6 +169,7 @@ class RegisterActivity : AppCompatActivity() {
             } else {
                 nameSearch()
                 usageSearch()
+                daysSearch()
             }
         }
     }
@@ -230,15 +235,15 @@ class RegisterActivity : AppCompatActivity() {
             num3 = i
             val extractView = completeQR.substring(namePosition + 6)
             val commaPosition1 = extractView.indexOf(",")
-            val viewProduct = extractView.substring(0, commaPosition1 + 15)
+            val viewProduct = extractView.substring(0, commaPosition1 + 10)
             val daysPosition = viewProduct.indexOf("日分")
             if (daysPosition == -1) {
                 break
             }
             val daysProduct = viewProduct.substring(daysPosition - 3)
             val commaPosition2 = daysProduct.indexOf(",")
-            val dateView = daysProduct.substring(0, commaPosition2)
-            productView = dateView
+            val daysView = daysProduct.substring(0, commaPosition2)
+            productView = daysView
             daysInput()
         }
     }
@@ -284,22 +289,28 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun daysInput() {
+        val day = if (productView != "") {
+            "日分"
+        } else {
+            ""
+        }
         when (num3) {
             1 -> {
-                binding.daysView1.text = productView
+                binding.daysView1.text = productView + day
             }
             2 -> {
-                binding.daysView1.text = productView
+                binding.daysView2.text = productView + day
             }
             3 -> {
-                binding.daysView1.text = productView
+                binding.daysView3.text = productView + day
             }
             4 -> {
-                binding.daysView1.text = productView
+                binding.daysView4.text = productView + day
             }
             5 -> {
-                binding.daysView1.text = productView
+                binding.daysView5.text = productView + day
             }
         }
     }
