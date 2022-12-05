@@ -26,18 +26,19 @@ class AlarmReceiver : BroadcastReceiver() {
         val drugName = intent.getStringExtra("NAME")
         val id = intent.getIntExtra("ID", 0)
 
+        val message ="${drugName}を飲んでください${id}"
+
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(android.R.drawable.ic_dialog_info)
             .setContentTitle("お薬アラーム")
-            .setContentText("${drugName}を飲んでください${id}")
+            .setContentText(message)
             .setAutoCancel(true)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(startApp)
 
-
         val notificationManagerCompat = NotificationManagerCompat.from(context)
-        notificationManagerCompat.notify(123, builder.build())
+        notificationManagerCompat.notify(message.hashCode(), builder.build())
 
         Toast.makeText(context, "アラームによる処理が実行されました。", Toast.LENGTH_LONG).show()
 

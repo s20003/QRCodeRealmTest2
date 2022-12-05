@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "jp.ac.it_college.std.s20003.qrcoderealmtest2"
-        minSdk 26
+        minSdk 24
         targetSdk 33
         versionCode 1
         versionName "1.0"

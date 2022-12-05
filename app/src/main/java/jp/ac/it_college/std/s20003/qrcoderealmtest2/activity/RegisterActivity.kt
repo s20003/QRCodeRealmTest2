@@ -2,7 +2,6 @@
 
 package jp.ac.it_college.std.s20003.qrcoderealmtest2.activity
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -54,8 +53,9 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.registerButton.setOnClickListener {
-            // val nameLists = listOf(binding.nameView1.text, binding.nameView2.text, binding.nameView3.text, binding.nameView4.text, binding.nameView5.text)
-            // val usageLists = listOf(binding.usageView1.text, binding.usageView2.text, binding.usageView3.text, binding.usageView4.text, binding.usageView5.text)
+//            val nameLists = listOf(binding.nameView1.text, binding.nameView2.text, binding.nameView3.text, binding.nameView4.text, binding.nameView5.text)
+//            val usageLists = listOf(binding.usageView1.text, binding.usageView2.text, binding.usageView3.text, binding.usageView4.text, binding.usageView5.text)
+//            val daysLists = listOf(binding.daysView1.text, binding.daysView2.text, binding.daysView3.text, binding.daysView4.text, binding.daysView5.text)
 
             val nameLists = listOf("aaa", "bbb", "ccc", "ddd", "eee")
             val usageLists = listOf("111", "222", "333", "444", "555")
@@ -289,28 +289,22 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun daysInput() {
-        val day = if (productView != "") {
-            "日分"
-        } else {
-            ""
-        }
         when (num3) {
             1 -> {
-                binding.daysView1.text = productView + day
+                binding.daysView1.text = productView
             }
             2 -> {
-                binding.daysView2.text = productView + day
+                binding.daysView2.text = productView
             }
             3 -> {
-                binding.daysView3.text = productView + day
+                binding.daysView3.text = productView
             }
             4 -> {
-                binding.daysView4.text = productView + day
+                binding.daysView4.text = productView
             }
             5 -> {
-                binding.daysView5.text = productView + day
+                binding.daysView5.text = productView
             }
         }
     }

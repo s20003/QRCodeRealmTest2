@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // createNotificationChannel()
 
         binding.infoButton.setOnClickListener {
             val intent = Intent(this, InformationActivity::class.java)
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.alarmButton.setOnClickListener {
-            val intent = Intent(this, AlarmListActivity::class.java)
+            val intent = Intent(this, NotificationActivity::class.java)
             startActivity(intent)
         }
     }

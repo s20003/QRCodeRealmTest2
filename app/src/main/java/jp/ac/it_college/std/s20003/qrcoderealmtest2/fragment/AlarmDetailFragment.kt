@@ -1,6 +1,7 @@
 package jp.ac.it_college.std.s20003.qrcoderealmtest2.fragment
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,6 +37,7 @@ class AlarmDetailFragment : Fragment() {
         val position = requireActivity().intent.getIntExtra("POSITION", 0)
 
         binding.checkButton.setOnClickListener {
+            binding.checkButton.setBackgroundColor(Color.rgb(128, 128, 128))
             Toast.makeText(context, "薬を飲みました", Toast.LENGTH_LONG).show()
         }
 
