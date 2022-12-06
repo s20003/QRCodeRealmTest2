@@ -38,10 +38,15 @@ class DetailFragment : Fragment() {
 
         binding.tvName.text = drugName
         binding.tvUsage.text = drugUsage
-        binding.tvDays.text = days
+        binding.tvDays.text = days.toString()
         if (binding.tvDays.text != "") {
-            binding.textView4.text = "日分"
+            binding.textView4.text = "期間"
         }
+//        if (binding.tvDays.text != "0") {
+//            binding.textView4.text = "日分"
+//        } else {
+//            binding.tvDays.text = ""
+//        }
 
         binding.notificationButton.setOnClickListener {
             val intent = Intent(context, NotificationActivity::class.java)
@@ -66,13 +71,6 @@ class DetailFragment : Fragment() {
                 .setNegativeButton("キャンセル", null)
                 .show()
         }
-
-        /*
-            // layout おかしい
-            data.drop(position)
-            notifyItemRemoved(position)
-            notifyItemRangeChanged(position, itemCount)
-         */
 
         return view
     }

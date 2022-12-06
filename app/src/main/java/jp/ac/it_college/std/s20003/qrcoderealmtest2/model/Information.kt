@@ -10,4 +10,5 @@ class Information : RealmObject {
     var name: String = ""
     var usage: String = ""
     var count: String = ""
+    var day: String = ""
 }

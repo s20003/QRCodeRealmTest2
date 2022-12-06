@@ -90,6 +90,7 @@ class NotificationActivity : AppCompatActivity() {
                                 })
                             }
                             setAlarm()
+                            reload()
                         }
                         .setNegativeButton("キャンセル", null)
                         .create()
@@ -103,13 +104,14 @@ class NotificationActivity : AppCompatActivity() {
                         })
                     }
                     setAlarm()
+                    reload()
                 }
             }, startHour, startMinute, false).show()
             // ↓ dataを取った後にresultを更新する
-            binding.timeList.apply {
-                adapter = TimeAdapter(result)
-                adapter?.notifyItemInserted(result.size)
-            }
+//            binding.timeList.apply {
+//                adapter = TimeAdapter(result)
+//                adapter?.notifyItemInserted(result.size)
+//            }
         }
 
         binding.homeButton.setOnClickListener {
@@ -136,7 +138,6 @@ class NotificationActivity : AppCompatActivity() {
 
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun setAlarm() {
-        // val items: RealmResults<Time> = realm.query<Time>("id == $0").find()
         // AlarmReceiverを指定
         val range = (1..1000)
         val id = range.random()
@@ -160,5 +161,24 @@ class NotificationActivity : AppCompatActivity() {
             AlarmManager.INTERVAL_FIFTEEN_MINUTES, // AlarmManager.INTERVAL_DAY
             pendingIntent
         )
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        reload()
+    }
+
+    private fun reload() {
+        overridePendingTransition(0, 0)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        finish()
+
+        overridePendingTransition(0, 0)
+        startActivity(intent)
+    }
+
+    public fun onClick() {
+        // ここにアラームのキャンセル部分を書く
+
     }
 }

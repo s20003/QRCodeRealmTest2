@@ -38,6 +38,7 @@ class AlarmDetailFragment : Fragment() {
 
         binding.checkButton.setOnClickListener {
             binding.checkButton.setBackgroundColor(Color.rgb(128, 128, 128))
+            binding.checkButton.isEnabled = false
             Toast.makeText(context, "薬を飲みました", Toast.LENGTH_LONG).show()
         }
 
