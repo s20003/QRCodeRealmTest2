@@ -26,7 +26,7 @@ class InformationAdapter(private val data: RealmResults<Information>) : Recycler
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // ViewHolder クラスが ViewBinding を持ってるので、それを経由して View の更新をする。
-        val day = if (data[position].count != "0") {
+        val day = if (data[position].count != "") {
             "日分"
         } else {
             ""

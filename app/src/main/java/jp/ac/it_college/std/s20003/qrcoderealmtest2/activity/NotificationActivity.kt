@@ -7,6 +7,8 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +16,7 @@ import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
+import jp.ac.it_college.std.s20003.qrcoderealmtest2.R
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.receiver.AlarmReceiver
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.adapter.TimeAdapter
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.ActivityNotificationBinding
@@ -38,7 +41,20 @@ class NotificationActivity : AppCompatActivity() {
 
     companion object {
         var name: String = ""
-        var drugName: String = ""
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_button, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        item.itemId.apply {
+            val intent = Intent(application, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     @SuppressLint("SetTextI18n")

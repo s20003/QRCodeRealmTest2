@@ -4,6 +4,8 @@ import io.realm.kotlin.types.ObjectId
 import io.realm.kotlin.types.RealmObject
 import io.realm.kotlin.types.annotations.PrimaryKey
 
+// 使わないファイル
+
 class Notify : RealmObject {
     @PrimaryKey
     var id: ObjectId = ObjectId.create()

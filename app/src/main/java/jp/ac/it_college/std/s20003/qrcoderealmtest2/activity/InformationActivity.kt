@@ -3,12 +3,15 @@ package jp.ac.it_college.std.s20003.qrcoderealmtest2.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
+import jp.ac.it_college.std.s20003.qrcoderealmtest2.R
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.adapter.InformationAdapter
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.ActivityInformationBinding
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Information
@@ -19,6 +22,20 @@ class InformationActivity : AppCompatActivity() {
     private val config = RealmConfiguration.Builder(schema = setOf(Information::class))
         .build()
     private val realm: Realm = Realm.open(config)
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_button, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        item.itemId.apply {
+            val intent = Intent(application, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

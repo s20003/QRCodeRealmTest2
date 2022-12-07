@@ -2,15 +2,20 @@ package jp.ac.it_college.std.s20003.qrcoderealmtest2.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
+import jp.ac.it_college.std.s20003.qrcoderealmtest2.R
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.adapter.AlarmAdapter
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.ActivityAlarmListBinding
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Notify
+
+// 使わないファイル
 
 class AlarmListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlarmListBinding

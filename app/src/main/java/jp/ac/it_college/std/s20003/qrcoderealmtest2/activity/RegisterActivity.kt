@@ -6,10 +6,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.google.zxing.integration.android.IntentIntegrator
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
+import jp.ac.it_college.std.s20003.qrcoderealmtest2.R
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.ActivityRegisterBinding
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Information
 import java.text.DateFormat
@@ -41,7 +44,21 @@ class RegisterActivity : AppCompatActivity() {
     private var code4 = ""
     private var code5 = ""
 
-    private val mtl = mutableListOf<String>()
+    // private val mtl = mutableListOf<String>()
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_button, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        item.itemId.apply {
+            val intent = Intent(application, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,25 +77,25 @@ class RegisterActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener {
 //            val nameLists = listOf(binding.nameView1.text, binding.nameView2.text, binding.nameView3.text, binding.nameView4.text, binding.nameView5.text)
 //            val usageLists = listOf(binding.usageView1.text, binding.usageView2.text, binding.usageView3.text, binding.usageView4.text, binding.usageView5.text)
-//            val daysLists = listOf(binding.daysView1.text.toString(), binding.daysView2.text.toString(), binding.daysView3.text.toString(), binding.daysView4.text.toString(), binding.daysView5.text.toString())
+//            val daysLists = listOf(binding.daysView1.text, binding.daysView2.text, binding.daysView3.text, binding.daysView4.text, binding.daysView5.text)
 
             val nameLists = listOf("aaa", "bbb", "ccc", "ddd", "eee")
             val usageLists = listOf("111", "222", "333", "444", "555")
-            val daysLists = listOf("0", "30", "0", "0", "0")
+            val daysLists = listOf("14", "30", "", "", "")
             val dateMutableList = mutableListOf<String>()
             for (i in daysLists) {
-                dateMutableList.add(days(i))
+                dateMutableList.add(days(i.toString()))
             }
 
             realm.writeBlocking {
                 for (i in 0..4) {
-                    if (nameLists[i] == "" && usageLists[i] == "" && daysLists[i] == "0" && dateMutableList[0] == "0") {
+                    if (nameLists[i] == "" && usageLists[i] == "" && daysLists[i] == "" && dateMutableList[i] == "") {
                         continue
                     }
                     copyToRealm(Information().apply {
                         name = nameLists[i].toString()
                         usage = usageLists[i].toString()
-                        count = daysLists[i]
+                        count = daysLists[i].toString()
                         day = dateMutableList[i]
                     })
                 }
@@ -248,27 +265,30 @@ class RegisterActivity : AppCompatActivity() {
             val viewProduct = extractView.substring(0, commaPosition1 + 10)
             val daysPosition = viewProduct.indexOf("日分")
             if (daysPosition == -1) {
-                break
+                productView = 0.toString()
+            } else {
+                val daysProduct = viewProduct.substring(daysPosition - 3)
+                val commaPosition2 = daysProduct.indexOf(",")
+                val daysView = daysProduct.substring(0, commaPosition2)
+                productView = daysView
+                daysInput()
             }
-            val daysProduct = viewProduct.substring(daysPosition - 3)
-            val commaPosition2 = daysProduct.indexOf(",")
-            val daysView = daysProduct.substring(0, commaPosition2)
-            productView = daysView
-            daysInput()
         }
     }
 
     @SuppressLint("SimpleDateFormat")
     private fun days(date: String): String {
         var day = ""
-        val a = date.toInt()
-        if (a != 0) {
+        if (date != "") {
+            val a = date.toIntOrNull()
             // 引数から日を取れるようにする
             val cal = Calendar.getInstance()
             cal.time = Date()
             val df: DateFormat = SimpleDateFormat("yyyy年MM月dd日")
 
-            cal.add(Calendar.DATE, a)
+            if (a != null) {
+                cal.add(Calendar.DATE, a)
+            }
             println(df.format(cal.time))
             day = df.format(cal.time)
         }
@@ -319,21 +339,25 @@ class RegisterActivity : AppCompatActivity() {
     private fun daysInput() {
         when (num3) {
             1 -> {
+                // mtl.add(0, productView)
                 binding.daysView1.text = productView
             }
             2 -> {
+                // mtl.add(1, productView)
                 binding.daysView2.text = productView
             }
             3 -> {
+                // mtl.add(2, productView)
                 binding.daysView3.text = productView
             }
             4 -> {
+                // mtl.add(3, productView)
                 binding.daysView4.text = productView
             }
             5 -> {
+                // mtl.add(4, productView)
                 binding.daysView5.text = productView
             }
         }
-        // mtl.add(productView)
     }
 }
