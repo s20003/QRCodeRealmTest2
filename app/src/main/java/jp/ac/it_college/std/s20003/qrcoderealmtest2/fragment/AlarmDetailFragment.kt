@@ -1,6 +1,10 @@
 package jp.ac.it_college.std.s20003.qrcoderealmtest2.fragment
 
+import android.app.AlarmManager
 import android.app.AlertDialog
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,12 +12,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.FragmentAlarmDetailBinding
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Time
+import jp.ac.it_college.std.s20003.qrcoderealmtest2.receiver.AlarmReceiver
 
 class AlarmDetailFragment : Fragment() {
     private var _binding: FragmentAlarmDetailBinding? = null
@@ -53,6 +59,8 @@ class AlarmDetailFragment : Fragment() {
                             .first()
                         this.delete(info)
                     }
+                    // 通知の削除処理
+                    deleteNotification()
                     // fragmentの削除処理を書く
                     activity?.finish()
                 }
@@ -61,5 +69,15 @@ class AlarmDetailFragment : Fragment() {
         }
 
         return view
+    }
+
+    private fun deleteNotification() {
+        // 通知の削除処理
+        val alarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(context, AlarmReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
+
+        pendingIntent.cancel()
+        alarmManager.cancel(pendingIntent)
     }
 }

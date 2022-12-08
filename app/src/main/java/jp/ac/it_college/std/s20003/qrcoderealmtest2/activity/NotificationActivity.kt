@@ -66,10 +66,6 @@ class NotificationActivity : AppCompatActivity() {
 
         val result: RealmResults<Time> = realm.query<Time>().find()
         // https://www.youtube.com/watch?v=7gaHk8dYteU
-//        var addList = mutableListOf<String>()
-//        for (i in 0 until result.size) {
-//            addList.add(result[i].toString())
-//        }
 
         name = intent.getStringExtra("NOTIFYNAME").toString()
 
@@ -130,11 +126,6 @@ class NotificationActivity : AppCompatActivity() {
 //            }
         }
 
-        binding.homeButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
         val dividerItemDecoration = DividerItemDecoration(this, LinearLayoutManager(this).orientation)
         binding.timeList.addItemDecoration(dividerItemDecoration)
     }
@@ -174,7 +165,8 @@ class NotificationActivity : AppCompatActivity() {
         alarmManager.setInexactRepeating(
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
-            AlarmManager.INTERVAL_FIFTEEN_MINUTES, // AlarmManager.INTERVAL_DAY
+            // AlarmManager.INTERVAL_DAY
+            AlarmManager.INTERVAL_FIFTEEN_MINUTES,
             pendingIntent
         )
     }
@@ -191,10 +183,5 @@ class NotificationActivity : AppCompatActivity() {
 
         overridePendingTransition(0, 0)
         startActivity(intent)
-    }
-
-    public fun onClick() {
-        // ここにアラームのキャンセル部分を書く
-
     }
 }

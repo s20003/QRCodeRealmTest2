@@ -12,12 +12,7 @@ import jp.ac.it_college.std.s20003.qrcoderealmtest2.activity.AlarmDetailActivity
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.NotificationItemBinding
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Time
 
-// timeDataの型をMutableListに変えてみる RealmResults<Time>
 class TimeAdapter (private val timeData: RealmResults<Time>) : RecyclerView.Adapter<TimeAdapter.ViewHolder>() {
-
-//    private val config = RealmConfiguration.Builder(schema = setOf(Time::class))
-//        .build()
-//    private val realm: Realm = Realm.open(config)
 
     class ViewHolder(val binding: NotificationItemBinding) : RecyclerView.ViewHolder(binding.root)
 

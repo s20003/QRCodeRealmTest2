@@ -2,7 +2,6 @@
     <string name="app_name">QRCodeRealmTest2</string>
     <string name="qr_button_text">Registration</string>
     <string name="info_button_text">Information</string>
-    <string name="home_button">Home</string>
     <string name="alarm_button">Alarm</string>
     <string name="setting_button_text">setting</string>
     <string name="register_button_text">Register</string>
