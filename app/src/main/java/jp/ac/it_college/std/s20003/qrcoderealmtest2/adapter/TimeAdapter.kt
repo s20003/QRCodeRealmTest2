@@ -4,9 +4,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.realm.kotlin.Realm
-import io.realm.kotlin.RealmConfiguration
-import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.activity.AlarmDetailActivity
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.NotificationItemBinding

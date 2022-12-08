@@ -73,13 +73,13 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.registerButton.setOnClickListener {
-            val nameLists = listOf(binding.nameView1.text, binding.nameView2.text, binding.nameView3.text, binding.nameView4.text, binding.nameView5.text)
-            val usageLists = listOf(binding.usageView1.text, binding.usageView2.text, binding.usageView3.text, binding.usageView4.text, binding.usageView5.text)
-            val daysLists = listOf(binding.daysView1.text, binding.daysView2.text, binding.daysView3.text, binding.daysView4.text, binding.daysView5.text)
+//            val nameLists = listOf(binding.nameView1.text, binding.nameView2.text, binding.nameView3.text, binding.nameView4.text, binding.nameView5.text)
+//            val usageLists = listOf(binding.usageView1.text, binding.usageView2.text, binding.usageView3.text, binding.usageView4.text, binding.usageView5.text)
+//            val daysLists = listOf(binding.daysView1.text, binding.daysView2.text, binding.daysView3.text, binding.daysView4.text, binding.daysView5.text)
 
-//            val nameLists = listOf("aaa", "bbb", "ccc", "ddd", "eee")
-//            val usageLists = listOf("111", "222", "333", "444", "555")
-//            val daysLists = listOf("14", "30", "", "", "")
+            val nameLists = listOf("aaa", "bbb", "ccc", "ddd", "eee")
+            val usageLists = listOf("111", "222", "333", "444", "555")
+            val daysLists = listOf("14", "30", "", "", "")
             val dateMutableList = mutableListOf<String>()
             for (i in daysLists) {
                 dateMutableList.add(days(i.toString()))

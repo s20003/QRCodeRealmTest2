@@ -119,11 +119,6 @@ class NotificationActivity : AppCompatActivity() {
                     reload()
                 }
             }, startHour, startMinute, false).show()
-            // ↓ dataを取った後にresultを更新する
-//            binding.timeList.apply {
-//                adapter = TimeAdapter(result)
-//                adapter?.notifyItemInserted(result.size)
-//            }
         }
 
         val dividerItemDecoration = DividerItemDecoration(this, LinearLayoutManager(this).orientation)

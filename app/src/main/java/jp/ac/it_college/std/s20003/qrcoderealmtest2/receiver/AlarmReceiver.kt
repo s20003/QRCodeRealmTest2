@@ -38,6 +38,7 @@ class AlarmReceiver : BroadcastReceiver() {
             .setContentIntent(startApp)
 
         val notificationManagerCompat = NotificationManagerCompat.from(context)
+        // notificationManagerCompat.notify(id, builder.build())
         notificationManagerCompat.notify(message.hashCode(), builder.build())
 
         Toast.makeText(context, "アラームによる処理が実行されました。", Toast.LENGTH_LONG).show()
