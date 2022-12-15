@@ -26,11 +26,11 @@ class AlarmReceiver : BroadcastReceiver() {
         val drugName = intent.getStringExtra("NAME")
         val id = intent.getIntExtra("ID", 0)
 
-        val message ="${drugName}を飲んでください${id}"
+        val message ="${drugName}を飲んでください" // ${id}削除
 
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(android.R.drawable.ic_dialog_info)
-            .setContentTitle("お薬アラーム")
+            .setContentTitle("お薬タイマー")
             .setContentText(message)
             .setAutoCancel(true)
             .setDefaults(NotificationCompat.DEFAULT_ALL)

@@ -2,11 +2,13 @@ package jp.ac.it_college.std.s20003.qrcoderealmtest2.activity
 
 import android.annotation.SuppressLint
 import android.app.*
+import android.app.PendingIntent.FLAG_ONE_SHOT
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.AppCompatEditText
@@ -148,20 +150,26 @@ class NotificationActivity : AppCompatActivity() {
         val intent = Intent(this, AlarmReceiver::class.java)
         intent.putExtra("NAME", drugName)
         intent.putExtra("ID", id)
-        pendingIntent = PendingIntent.getBroadcast(this, id, intent, 0)
+        pendingIntent = PendingIntent.getBroadcast(this, id, intent, 0)  // 0をFLAG_ONE_SHOTにかえた
 
         // アラームの時間指定
-        calendar = Calendar.getInstance().apply {
-            timeInMillis = System.currentTimeMillis()
-            set(Calendar.HOUR_OF_DAY, hour)
-            set(Calendar.MINUTE, min)
-            set(Calendar.SECOND, 0)
-        }
-        alarmManager.setInexactRepeating(
-            AlarmManager.RTC_WAKEUP,
-            calendar.timeInMillis,
-            // AlarmManager.INTERVAL_DAY
-            AlarmManager.INTERVAL_FIFTEEN_MINUTES,
+//        calendar = Calendar.getInstance().apply {
+//            timeInMillis = System.currentTimeMillis()
+//            set(Calendar.HOUR_OF_DAY, hour)
+//            set(Calendar.MINUTE, min)
+//            set(Calendar.SECOND, 0)
+//        }
+//        alarmManager.setInexactRepeating(
+//            AlarmManager.RTC_WAKEUP,
+//            calendar.timeInMillis,
+//            AlarmManager.INTERVAL_DAY,
+//            // AlarmManager.INTERVAL_FIFTEEN_MINUTES,
+//            pendingIntent
+//        )
+
+        alarmManager.set(
+            AlarmManager.ELAPSED_REALTIME_WAKEUP,
+            SystemClock.elapsedRealtime() + 20 * 1000,
             pendingIntent
         )
     }
