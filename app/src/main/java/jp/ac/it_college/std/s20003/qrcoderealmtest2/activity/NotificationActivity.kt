@@ -2,7 +2,6 @@ package jp.ac.it_college.std.s20003.qrcoderealmtest2.activity
 
 import android.annotation.SuppressLint
 import android.app.*
-import android.app.PendingIntent.FLAG_ONE_SHOT
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -169,7 +168,7 @@ class NotificationActivity : AppCompatActivity() {
 
         alarmManager.set(
             AlarmManager.ELAPSED_REALTIME_WAKEUP,
-            SystemClock.elapsedRealtime() + 20 * 1000,
+            SystemClock.elapsedRealtime() + 15 * 1000,
             pendingIntent
         )
     }
