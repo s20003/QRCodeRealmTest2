@@ -9,7 +9,11 @@ import io.realm.kotlin.query.RealmResults
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.AlarmItemBinding
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Notify
 
-class AlarmAdapter (private val notifyData: RealmResults<Notify>) : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
+// 使わないファイル
+
+class AlarmAdapter : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
+    // val notifyData: RealmResults<Notify> = TODO()
+    val notifyData = mutableListOf<String>()
 
     private val config = RealmConfiguration.Builder(schema = setOf(Notify::class))
         .build()

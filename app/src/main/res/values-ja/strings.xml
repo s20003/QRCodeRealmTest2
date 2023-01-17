@@ -19,4 +19,9 @@
     <string name="alarm_setting_button">通知</string>
     <string name="notification_list_title">通知 一覧</string>
     <string name="check_button_text">薬を飲んだ</string>
+    <string name="morning_checkbox_text">朝</string>
+    <string name="noon_checkbox_text">昼</string>
+    <string name="night_checkbox_text">夜</string>
+    <string name="time_setting_button_text">時間設定</string>
+    <string name="next_button_text">次へ</string>
 </resources>

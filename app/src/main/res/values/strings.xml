@@ -18,6 +18,11 @@
     <string name="alarm_setting_button">Notification</string>
     <string name="notification_list_title">NotificationList</string>
     <string name="check_button_text">Took Medicine</string>
+    <string name="morning_checkbox_text">Morning</string>
+    <string name="noon_checkbox_text">Noon</string>
+    <string name="night_checkbox_text">Night</string>
+    <string name="time_setting_button_text">Time Setting</string>
+    <string name="next_button_text">Next</string>
     <!-- TODO: Remove or change this placeholder text -->
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

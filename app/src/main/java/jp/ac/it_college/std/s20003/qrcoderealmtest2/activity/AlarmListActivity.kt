@@ -20,6 +20,8 @@ import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Notify
 class AlarmListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlarmListBinding
 
+    private val alarmAdapter = AlarmAdapter()
+
     private val config = RealmConfiguration.Builder(schema = setOf(Notify::class))
         .build()
     private val realm: Realm = Realm.open(config)
@@ -35,7 +37,7 @@ class AlarmListActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@AlarmListActivity).apply {
                 orientation = LinearLayoutManager.VERTICAL
             }
-            adapter = AlarmAdapter(result)
+            adapter = alarmAdapter
         }
 
         val dividerItemDecoration = DividerItemDecoration(this, LinearLayoutManager(this).orientation)
