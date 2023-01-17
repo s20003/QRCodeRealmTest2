@@ -6,15 +6,21 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import io.realm.kotlin.Realm
+import io.realm.kotlin.RealmConfiguration
+import io.realm.kotlin.ext.query
+import io.realm.kotlin.query.RealmResults
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.R
+import jp.ac.it_college.std.s20003.qrcoderealmtest2.model.Information
 
 class SettingAdapter : RecyclerView.Adapter<SettingAdapter.ViewHolderItem>() {
     companion object {
         var returnSelectValues = mutableListOf<String>()
     }
 
-    val nameList =
-        listOf("Name1", "Name2", "Name3", "Name4", "Name5", "Name6", "Name7", "Name8", "Name9", "Name10")
+    private val config = RealmConfiguration.Builder(schema = setOf(Information::class)).build()
+    private val  realm: Realm = Realm.open(config)
+    private val data: RealmResults<Information> = realm.query<Information>().find()
 
     inner class ViewHolderItem(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val checkBox: CheckBox = itemView.findViewById(R.id.checkBox)
@@ -28,23 +34,18 @@ class SettingAdapter : RecyclerView.Adapter<SettingAdapter.ViewHolderItem>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolderItem, position: Int) {
-        holder.checkBox.text = nameList[position]
+        holder.checkBox.text = data[position].name
         holder.checkBox.setOnClickListener {
             if (holder.checkBox.isChecked) {
-                Toast.makeText(holder.itemView.context, "${nameList[position]}を選択しました", Toast.LENGTH_SHORT).show()
-                // holder.selectValues.add(nameList[position])
-                holder.selectValues = nameList[position]
-                // returnSelectValues = holder.selectValues
+                holder.selectValues = data[position].name
                 returnSelectValues.add(holder.selectValues)
             } else {
-                Toast.makeText(holder.itemView.context, "${nameList[position]}の選択を解除しました", Toast.LENGTH_SHORT).show()
-                // holder.selectValues.remove(nameList[position])
                 returnSelectValues.remove(holder.selectValues)
             }
         }
     }
 
-    override fun getItemCount(): Int  = nameList.size
+    override fun getItemCount(): Int  = data.size
 
     fun listOfSelectedActivities(): MutableList<String> {
         return returnSelectValues

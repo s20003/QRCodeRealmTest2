@@ -1,13 +1,32 @@
 package jp.ac.it_college.std.s20003.qrcoderealmtest2.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import jp.ac.it_college.std.s20003.qrcoderealmtest2.R
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.databinding.ActivityNextBinding
 import jp.ac.it_college.std.s20003.qrcoderealmtest2.adapter.SettingAdapter
 
 class NextActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNextBinding
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_button, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        item.itemId.apply {
+            val intent = Intent(application, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,15 +40,10 @@ class NextActivity : AppCompatActivity() {
         val nightHour = intent.getIntExtra("NIGHT_HOUR", 24)
         val nightMin = intent.getIntExtra("NIGHT_MINUTE", 60)
 
-//        binding.textView7.text = monHour.toString()
-//        binding.textView8.text = monMin.toString()
-
         binding.recyclerView.apply {
             adapter = SettingAdapter()
             layoutManager = LinearLayoutManager(this@NextActivity)
         }
-
-        SettingAdapter().nameList
 
         binding.returnButton.setOnClickListener {
             finish()
@@ -37,8 +51,6 @@ class NextActivity : AppCompatActivity() {
 
         binding.registerButton.setOnClickListener {
             val selectedList = SettingAdapter().listOfSelectedActivities()
-            // println(selectedList)
-//            val intent = Intent(this, DisplayActivity::class.java)
             var str = ""
             for (v in selectedList) {
                 // 一つの文字列にする
@@ -48,8 +60,8 @@ class NextActivity : AppCompatActivity() {
                     "$v,"
                 }
             }
+            Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
             println(str)
-//            startActivity(intent)
         }
         // https://www.youtube.com/watch?v=4uWc34lk2iE 7:35
     }
