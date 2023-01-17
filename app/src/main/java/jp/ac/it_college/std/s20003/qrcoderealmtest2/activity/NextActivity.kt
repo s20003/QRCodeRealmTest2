@@ -54,7 +54,7 @@ class NextActivity : AppCompatActivity() {
             var str = ""
             for (v in selectedList) {
                 // 一つの文字列にする
-                str += if (v == selectedList[selectedList.size - 1] ) {
+                str += if (v == selectedList[selectedList.size - 1]) {
                     v
                 } else {
                     "$v,"
@@ -62,6 +62,13 @@ class NextActivity : AppCompatActivity() {
             }
             Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
             println(str)
+
+            // ここでデータベースへの登録と通知の設定をする
+
+
+//      テストのためコメントにしておく
+//            val intent = Intent(this, NotificationActivity::class.java)
+//            startActivity(intent)
         }
         // https://www.youtube.com/watch?v=4uWc34lk2iE 7:35
     }

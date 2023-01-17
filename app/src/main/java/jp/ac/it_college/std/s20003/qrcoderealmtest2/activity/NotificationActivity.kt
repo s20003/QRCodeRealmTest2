@@ -152,25 +152,25 @@ class NotificationActivity : AppCompatActivity() {
         pendingIntent = PendingIntent.getBroadcast(this, id, intent, 0)  // 0をFLAG_ONE_SHOTにかえた
 
         // アラームの時間指定
-//        calendar = Calendar.getInstance().apply {
-//            timeInMillis = System.currentTimeMillis()
-//            set(Calendar.HOUR_OF_DAY, hour)
-//            set(Calendar.MINUTE, min)
-//            set(Calendar.SECOND, 0)
-//        }
-//        alarmManager.setInexactRepeating(
-//            AlarmManager.RTC_WAKEUP,
-//            calendar.timeInMillis,
-//            AlarmManager.INTERVAL_DAY,
-//            // AlarmManager.INTERVAL_FIFTEEN_MINUTES,
-//            pendingIntent
-//        )
-
-        alarmManager.set(
-            AlarmManager.ELAPSED_REALTIME_WAKEUP,
-            SystemClock.elapsedRealtime() + 15 * 1000,
+        calendar = Calendar.getInstance().apply {
+            timeInMillis = System.currentTimeMillis()
+            set(Calendar.HOUR_OF_DAY, hour)
+            set(Calendar.MINUTE, min)
+            set(Calendar.SECOND, 0)
+        }
+        alarmManager.setInexactRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            AlarmManager.INTERVAL_DAY,
+            // AlarmManager.INTERVAL_FIFTEEN_MINUTES,
             pendingIntent
         )
+
+//        alarmManager.set(
+//            AlarmManager.ELAPSED_REALTIME_WAKEUP,
+//            SystemClock.elapsedRealtime() + 15 * 1000,
+//            pendingIntent
+//        )
     }
 
     override fun onRestart() {
