@@ -25,9 +25,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.alarmButton.setOnClickListener {
-//            val intent = Intent(this, NotificationActivity::class.java)
-//            startActivity(intent)
-            val intent = Intent(this, TimeActivity::class.java)
+            val intent = Intent(this, NotificationActivity::class.java)
             startActivity(intent)
         }
     }

@@ -15,7 +15,7 @@ class AlarmReceiver : BroadcastReceiver() {
         private const val CHANNEL_ID = "notification_channel"
     }
 
-    @SuppressLint("UnspecifiedImmutableFlag")
+    @SuppressLint("UnspecifiedImmutableFlag", "MissingPermission")
     override fun onReceive(context: Context, intent: Intent) {
         val i = Intent(context, NotificationActivity::class.java)
         i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -38,8 +38,8 @@ class AlarmReceiver : BroadcastReceiver() {
             .setContentIntent(startApp)
 
         val notificationManagerCompat = NotificationManagerCompat.from(context)
-        // notificationManagerCompat.notify(id, builder.build())
-        notificationManagerCompat.notify(message.hashCode(), builder.build())
+        notificationManagerCompat.notify(id, builder.build())
+        // notificationManagerCompat.notify(message.hashCode(), builder.build())
 
         Toast.makeText(context, "アラームによる処理が実行されました。", Toast.LENGTH_LONG).show()
 

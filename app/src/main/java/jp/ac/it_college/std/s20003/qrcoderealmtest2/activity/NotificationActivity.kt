@@ -63,7 +63,7 @@ class NotificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNotificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        createNotificationChannel()
+        // createNotificationChannel()
 
         val result: RealmResults<Time> = realm.query<Time>().find()
         // https://www.youtube.com/watch?v=7gaHk8dYteU
@@ -77,6 +77,7 @@ class NotificationActivity : AppCompatActivity() {
             adapter = TimeAdapter(result)
         }
 
+        /*
         binding.addButton.setOnClickListener {
             calendar = Calendar.getInstance()
             val startHour = calendar.get(Calendar.HOUR_OF_DAY)
@@ -121,11 +122,18 @@ class NotificationActivity : AppCompatActivity() {
                 }
             }, startHour, startMinute, false).show()
         }
+         */
+
+        binding.addButton.setOnClickListener {
+            val intent = Intent(this, TimeActivity::class.java)
+            startActivity(intent)
+        }
 
         val dividerItemDecoration = DividerItemDecoration(this, LinearLayoutManager(this).orientation)
         binding.timeList.addItemDecoration(dividerItemDecoration)
     }
 
+    /*
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name: CharSequence = "DrugReminderChannel"
@@ -186,4 +194,5 @@ class NotificationActivity : AppCompatActivity() {
         overridePendingTransition(0, 0)
         startActivity(intent)
     }
+     */
 }
