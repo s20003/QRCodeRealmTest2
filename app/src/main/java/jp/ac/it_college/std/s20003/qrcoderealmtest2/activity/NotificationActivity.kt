@@ -180,6 +180,7 @@ class NotificationActivity : AppCompatActivity() {
 //            pendingIntent
 //        )
     }
+    */
 
     override fun onRestart() {
         super.onRestart()
@@ -194,5 +195,4 @@ class NotificationActivity : AppCompatActivity() {
         overridePendingTransition(0, 0)
         startActivity(intent)
     }
-     */
 }

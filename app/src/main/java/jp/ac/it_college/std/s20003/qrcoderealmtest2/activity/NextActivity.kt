@@ -36,8 +36,6 @@ class NextActivity : AppCompatActivity() {
 
     private lateinit var calendar: Calendar
 
-    private var str = ""
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_button, menu)
         return true
@@ -76,6 +74,7 @@ class NextActivity : AppCompatActivity() {
 
         binding.registerButton.setOnClickListener {
             val selectedList = SettingAdapter().listOfSelectedActivities()
+            var str = ""
             for (v in selectedList) {
                 // 一つの文字列にする
                 str += if (v == selectedList[selectedList.size - 1]) {
@@ -88,9 +87,9 @@ class NextActivity : AppCompatActivity() {
             println(str)
 
             // ここでデータベースへの登録と通知の設定をする
-            monTime(monHour, monMin)
-            noonTime(noonHour, noonMin)
-            nightTime(nightHour, nightMin)
+            monTime(str, monHour, monMin)
+            noonTime(str, noonHour, noonMin)
+            nightTime(str, nightHour, nightMin)
 
 //      テストのためコメントにしておく
             val intent = Intent(this, NotificationActivity::class.java)
@@ -100,7 +99,7 @@ class NextActivity : AppCompatActivity() {
         // https://www.youtube.com/watch?v=4uWc34lk2iE 7:35
     }
 
-    private fun monTime(h: Int, m: Int) {
+    private fun monTime(str: String, h: Int, m: Int) {
         if (h != 24 || m != 60) {
             realm.writeBlocking {
                 copyToRealm(Time().apply {
@@ -113,7 +112,7 @@ class NextActivity : AppCompatActivity() {
         }
     }
 
-    private fun noonTime(h: Int, m: Int) {
+    private fun noonTime(str: String, h: Int, m: Int) {
         if (h != 24 || m != 60) {
             realm.writeBlocking {
                 copyToRealm(Time().apply {
@@ -126,7 +125,7 @@ class NextActivity : AppCompatActivity() {
         }
     }
 
-    private fun nightTime(h: Int, m: Int) {
+    private fun nightTime(str: String, h: Int, m: Int) {
         if (h != 24 || m != 60) {
             realm.writeBlocking {
                 copyToRealm(Time().apply {
@@ -155,7 +154,10 @@ class NextActivity : AppCompatActivity() {
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun setAlarm(name: String, hour: Int, min: Int) {
         // AlarmReceiverを指定
-        val id = name.hashCode()
+        val range = (1..2147483647)
+        val id = range.random()
+        // val id = name.hashCode()
+        println(id)
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmReceiver::class.java)
         intent.putExtra("NAME", name)
