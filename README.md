@@ -6,11 +6,11 @@
 
 ## 機能
 
-・時間になると薬を飲んだかの確認の通知を送る(時間を設定する)
+- 時間になると薬を飲んだかの確認の通知を送る(時間を設定する)
 
-・薬の情報をQRコードで登録できるようにする
+- 薬の情報をQRコードで登録できるようにする
 
-・利用者が薬を飲んだ場合は、「薬を飲んだ」ボタンを押してもらう
+- 利用者が薬を飲んだ場合は、「薬を飲んだ」ボタンを押してもらう
 
 ## 使用環境
 
@@ -28,9 +28,8 @@ $ git clone https://github.com/s20003/QRCodeRealmTest2
 
 ## 製作者
 
-[s20003](https://github.com/s20003)
-
-[s20013](https://github.com/s20013)
+- [s20003](https://github.com/s20003)
+- [s20013](https://github.com/s20013)
 
 ## FAQ
 
@@ -44,9 +43,9 @@ $ git clone https://github.com/s20003/QRCodeRealmTest2
 
 ## 今後の計画
 
- ・利用者がお年寄りの場合、薬の通知があった際に家族にも同じ
+ - 利用者がお年寄りの場合、薬の通知があった際に家族にも同じ
 通知が来るようにする
 
-・Google Play Store でリリースする
+- Google Play Store でリリースする
 
 [main](https://github.com/s20003/QRCodeRealmTest2/tree/master/app/src/main/java/jp/ac/it_college/std/s20003/qrcoderealmtest2)
