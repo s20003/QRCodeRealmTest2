@@ -18,6 +18,8 @@ Android バージョン8.0以上 推奨
 
 ## 使い方
 
+![Screenshot from 2023-01-12 14-19-53](https://user-images.githubusercontent.com/66397523/213600420-e105f410-05ec-4fa8-a44d-e030e594afbf.png)
+
 ## インストール方法
 
 このリポジトリをクローンしていただき、インストールします。
