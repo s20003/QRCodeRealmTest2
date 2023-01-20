@@ -20,6 +20,12 @@ Android バージョン8.0以上 推奨
 
 ## インストール方法
 
+このリポジトリをクローンしていただき、インストールします。
+
+~~~
+$ git clone https://github.com/s20003/QRCodeRealmTest2
+~~~
+
 ## 製作者
 
 [s20003](https://github.com/s20003)
@@ -40,5 +46,7 @@ Android バージョン8.0以上 推奨
 
  ・利用者がお年寄りの場合、薬の通知があった際に家族にも同じ
 通知が来るようにする
+
+・Google Play Store でリリースする
 
 [main](https://github.com/s20003/QRCodeRealmTest2/tree/master/app/src/main/java/jp/ac/it_college/std/s20003/qrcoderealmtest2)
