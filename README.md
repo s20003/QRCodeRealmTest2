@@ -34,12 +34,12 @@ Android バージョン8.0以上 推奨
 
 登録した情報を見るには薬の情報ボタンをタップします。
 <p align="center">
-<kbd><img src="https://user-images.githubusercontent.com/66397523/213900576-03865360-436f-4c3b-941d-c6827183c768.png" width="300"></kbd>
+<kbd><img src="https://user-images.githubusercontent.com/66397523/213968350-5f411487-c9d0-41b5-a7fa-a7d5b9e4e149.png" width="300"></kbd>
 </p>
 
 通知の設定をするには通知設定ボタンをタップします。
 <p align="center">
-<kbd><img src="https://user-images.githubusercontent.com/66397523/213900583-28f8e76b-a720-49cb-a982-f783ca136517.png" width="300"></kbd>
+<kbd><img src="https://user-images.githubusercontent.com/66397523/213968640-b9673101-af4e-4237-a567-f770bc9efdec.png" width="300"></kbd>
 </p>
 
 次に、追加ボタンをタップします。
