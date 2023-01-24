@@ -22,30 +22,36 @@ Android バージョン8.0以上 推奨
 <kbd><img src="https://user-images.githubusercontent.com/66397523/213898848-48efb577-17c9-4a11-b77a-26838c37a337.png" width="300"></kbd>
 </p>
 
+
 次に、カメラ起動ボタンをタップします。そうするとQRコード読み取り画面に移動します。
 <p align="center">
 <kbd><img src="https://user-images.githubusercontent.com/66397523/213900554-a668969b-e251-46fa-9e33-cc2410b85225.png" width="300"></kbd>
 </p>
+
 
 読み込み終わったら登録ボタンをタップします。
 <p align="center">
 <kbd><img src="https://user-images.githubusercontent.com/66397523/213900562-ba55931f-38fd-47bc-b20d-3432dc2c1ff2.png" width="300"></kbd>
 </p>
 
+
 登録した情報を見るには薬の情報ボタンをタップします。
 <p align="center">
 <kbd><img src="https://user-images.githubusercontent.com/66397523/213968350-5f411487-c9d0-41b5-a7fa-a7d5b9e4e149.png" width="300"></kbd>
 </p>
+
 
 通知の設定をするには通知設定ボタンをタップします。
 <p align="center">
 <kbd><img src="https://user-images.githubusercontent.com/66397523/213968640-b9673101-af4e-4237-a567-f770bc9efdec.png" width="300"></kbd>
 </p>
 
+
 次に、追加ボタンをタップします。
 <p align="center">
 <kbd><img src="https://user-images.githubusercontent.com/66397523/213900592-87857fb0-2132-4f0a-a55a-42ef30b926ae.png" width="300"></kbd>
 </p>
+
 
 そうすると朝、昼、夜の選択肢がでてくるので通知がほしい時間帯にチェックをつけます。
 
@@ -56,30 +62,36 @@ Android バージョン8.0以上 推奨
 <kbd><img src="https://user-images.githubusercontent.com/66397523/213900599-1d06b6c5-0dd1-4cac-a80d-abb4a678a9be.png" width="300"></kbd>
 </p>
 
+
 画面が移動したら登録した薬の名前をタップし、登録ボタンをタップします。
 <p align="center">
 <kbd><img src="https://user-images.githubusercontent.com/66397523/213900608-2408126f-935f-4261-9d93-2dd56b08cbb8.png" width="300"></kbd>
 </p>
+
 
 これで通知の設定は完了です。
 <p align="center">
 <kbd><img src="https://user-images.githubusercontent.com/66397523/213900618-d854d591-8028-47cc-b7b6-aa06f2d1674d.png" width="300"></kbd>
 </p>
 
+
 通知がきたら通知をタップすることでアプリが起動します。
 <p align="center">
 <kbd><img src="https://user-images.githubusercontent.com/66397523/213900632-83d77327-9972-405c-9272-173533be4144.png" width="300"></kbd>
 </p>
+
 
 設定した通知をタップすることで確認画面に移動します。
 <p align="center">
 <kbd><img src="https://user-images.githubusercontent.com/66397523/213900716-3160cb0c-5ade-4930-8d26-d1aed0d65ffc.png" width="300"></kbd>
 </p>
 
+
 最後に薬を飲んだボタンをタップします。
 <p align="center">
 <kbd><img src="https://user-images.githubusercontent.com/66397523/213900642-e5121afa-0982-4376-bac1-968206d3b7f5.png" width="300"></kbd>
 </p>
+
 
 ## インストール方法
 
